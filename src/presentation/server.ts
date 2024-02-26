@@ -18,6 +18,9 @@ export class Server {
     }
 
     async start() {
+        // middlewares
+        this.app.use(express.json());
+        this.app.use(express.urlencoded({extended: true})); // x-www-form-urlencoded
         // usar las rutas definidas
         this.app.use(this.routes);
         // escuchar el puerto
