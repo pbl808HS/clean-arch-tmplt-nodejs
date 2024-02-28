@@ -1,5 +1,6 @@
 import { UserModel } from "../../data/mongodb";
 import { RegisterUserDto, UserEntity, CustomError, AuthDatasource } from '../../domain';
+import {BcryptAdapter} from "../../config";
 
 export class AuthDatasourceImpl implements AuthDatasource {
 
@@ -15,7 +16,7 @@ export class AuthDatasourceImpl implements AuthDatasource {
             const user = await UserModel.create({
                 name: name,
                 email: email,
-                password: password
+                password: BcryptAdapter.hash(password)
             });
 
             await user.save();
@@ -28,7 +29,7 @@ export class AuthDatasourceImpl implements AuthDatasource {
                 user.id,
                 name,
                 email,
-                password,
+                user.password,
                 user.roles
             );
         } catch (error) {
