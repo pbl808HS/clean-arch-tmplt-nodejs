@@ -18,7 +18,10 @@ export class AuthDatasourceImpl implements AuthDatasource {
             // TODO: OK
             // 1. Verificar si el correo existe
             const emailExists = await UserModel.findOne({ email });
-            if (emailExists) throw CustomError.badRequest('User already exists');
+            if (emailExists) {
+                console.log('User already exists');
+                throw CustomError.badRequest('Error code E-401, please contact to or support team for more details');
+            }
 
             // 2. Hash de la contraseña
             const user = await UserModel.create({
