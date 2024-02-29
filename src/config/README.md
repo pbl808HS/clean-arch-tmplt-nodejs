@@ -1,0 +1,1 @@
+Config is used for configurations like environment variables, agnostic functions like encrypted, jwts, validators, even adapters for third parties dependency.

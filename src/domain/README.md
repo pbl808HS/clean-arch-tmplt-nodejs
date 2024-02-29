@@ -1,0 +1,1 @@
+Domain is for all business rules, it is completely agnostic and didn't have any third party dependencies. Only can be contain own code.
